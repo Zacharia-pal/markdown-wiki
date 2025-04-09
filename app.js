@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+const { useState, useEffect } = require('react');
+const axios = require('axios');
 
 const CLIENT_ID = 'your-client-id'; // Use your GitHub OAuth Client ID
 const REPO = 'Zacharia-pal/DocLibPub'; // Replace with your repo
@@ -58,30 +58,46 @@ const App = () => {
     if (token) fetchFiles();
   }, [token]);
 
-  return (
-    <div>
-      {!token ? (
-        <button onClick={login}>Login with GitHub</button>
-      ) : (
-        <div>
-          <h2>Markdown Wiki</h2>
-          <button onClick={saveFile}>Save</button>
-          <textarea
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            style={{ width: '100%', height: '200px' }}
-          ></textarea>
-          <ul>
-            {files.map((file) => (
-              <li key={file.path}>
-                <button onClick={() => loadFile(file.path)}>{file.path}</button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </div>
+  return React.createElement(
+    'div',
+    null,
+    !token
+      ? React.createElement(
+          'button',
+          { onClick: login },
+          'Login with GitHub'
+        )
+      : React.createElement(
+          'div',
+          null,
+          React.createElement('h2', null, 'Markdown Wiki'),
+          React.createElement(
+            'button',
+            { onClick: saveFile },
+            'Save'
+          ),
+          React.createElement('textarea', {
+            value: content,
+            onChange: (e) => setContent(e.target.value),
+            style: { width: '100%', height: '200px' },
+          }),
+          React.createElement(
+            'ul',
+            null,
+            files.map((file) =>
+              React.createElement(
+                'li',
+                { key: file.path },
+                React.createElement(
+                  'button',
+                  { onClick: () => loadFile(file.path) },
+                  file.path
+                )
+              )
+            )
+          )
+        )
   );
 };
 
-export default App;
+module.exports = App;
