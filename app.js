@@ -58,7 +58,7 @@ const App = () => {
     if (token) fetchFiles();
   }, [token]);
 
-  return (
+  return ("
     <div>
       {!token ? (
         <button onClick={login}>Login with GitHub</button>
@@ -80,7 +80,7 @@ const App = () => {
           </ul>
         </div>
       )}
-    </div>
+    </div>"
   );
 };
 
