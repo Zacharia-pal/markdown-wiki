@@ -1,0 +1,13 @@
+{
+  "name": "markdown-wiki",
+  "version": "1.0.0",
+  "description": "Markdown Wiki site using GitHub and Netlify",
+  "dependencies": {
+    "axios": "^0.27.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "netlify dev",
+    "build": "netlify build"
+  }
+}
